@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Metadata Inspector</title>
+    <style>
+      .layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .player,
+      .metadata {
+        min-width: 0;
+      }
+
+      .player {
+        display: flex;
+        flex: 2 1 480px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .player select {
+        width: min(100%, 200px);
+      }
+
+      .player video {
+        width: 100%;
+        height: auto;
+      }
+
+      .metadata {
+        flex: 1 1 280px;
+        border: 1px dotted black;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Video Metadata Inspector</h1>
+    <div class="layout">
+      <div class="player">
+        <select name="video" id="video-select">
+          <option id="recording-1-option" value="recording-1.mov" selected>
+            recording-1.mov
+          </option>
+          <option id="recording-2-option" value="recording-2.mov">
+            recording-2.mov
+          </option>
+        </select>
+        <video id="video-recording" controls></video>
+      </div>
+      <div id="video-metadata" class="metadata">
+        <h3 style="margin: 0px">Video Metadata</h3>
+        <div style="padding-left: 10px">
+          <p>File Name: <span id="file-name"></span></p>
+          <p>File Size: <span id="file-size"></span></p>
+          <p>File Type: <span id="file-type"></span></p>
+          <p>File Extension: <span id="file-extension"></span></p>
+          <p>Last Modified Date: <span id="last-modified-date"></span></p>
+          <p>Duration: <span id="duration"></span></p>
+          <p>Width: <span id="width"></span></p>
+          <p>Height: <span id="height"></span></p>
+          <p>Resolution: <span id="resolution"></span></p>
+          <p>Aspect Ratio: <span id="aspect-ratio"></span></p>
+          <p>
+            Estimated Overall Bitrate:
+            <span id="estimated-overall-bitrate"></span>
+          </p>
+          <p>Current Playback Time: <span id="current-playback-time"></span></p>
+          <p>Total Duration: <span id="total-duration"></span></p>
+          <p>Playback Status: <span id="playback-status"></span></p>
+          <p>
+            Total Pixels Per Frame: <span id="total-pixels-per-frame"></span>
+          </p>
+
+          <!-- validating properties -->
+          <table style="width: 100%">
+            <tr>
+              <td>Is Playable</td>
+              <td><span id="basic-file-validation-is-playable"></span></td>
+            </tr>
+            <tr>
+              <td>Is Metadata Loaded</td>
+              <td>
+                <span id="basic-file-validation-is-metadata-loaded"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>Is Video Dimensions Valid</td>
+              <td>
+                <span
+                  id="basic-file-validation-is-video-dimensions-valid"
+                ></span>
+              </td>
+            </tr>
+            <tr>
+              <td>Is Duration Finite</td>
+              <td>
+                <span id="basic-file-validation-is-duration-finite"></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
